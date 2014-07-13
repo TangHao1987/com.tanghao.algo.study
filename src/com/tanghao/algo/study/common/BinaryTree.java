@@ -1,13 +1,18 @@
 package com.tanghao.algo.study.common;
 
+import java.util.LinkedList;
+
 public class BinaryTree {
-	private int [] array;
+	private LinkedList<Integer> array;
 	
 	public BinaryTree(){
 		
 	}
 	public BinaryTree(int [] array){
-		this.setArray(array);
+		this.array = new LinkedList<Integer>();
+		for(int i : array){
+			this.array.add(i);	
+		}
 	}
 	
 	public int getParentIndex(int index){
@@ -19,11 +24,11 @@ public class BinaryTree {
 	}
 	
 	public int getParentValue(int index){
-			return array[getParentIndex(index)];
+			return array.get(getParentIndex(index));
 	}
 	
 	public boolean hasLeftChild(int index){
-		if(index*2 + 1 < array.length){
+		if(index*2 + 1 < array.size()){
 			return true;
 		}else{
 			return false;
@@ -31,7 +36,7 @@ public class BinaryTree {
 	}
 	
 	public boolean hasRightChild(int index){
-		if(index*2 + 2 < array.length){
+		if(index*2 + 2 < array.size()){
 			return true;
 		}else{
 			return false;
@@ -48,32 +53,27 @@ public class BinaryTree {
 	
 	public int getLeftIndex(int index){
 		int leftIndex = index*2 + 1; 
-		if(leftIndex < array.length){
+		if(leftIndex < array.size()){
 			return leftIndex;
 		}else{
 			throw new IllegalArgumentException("leftIndexOutOfArrayLength");
 		}
 	}
 	public int getLeftValue(int index){
-		return array[getLeftIndex(index)];
+		return array.get(getLeftIndex(index));
 	}
 	
 	public int getRightIndex(int index){
 		int rightIndex = index*2 + 2; 
-		if(rightIndex < array.length){
+		if(rightIndex < array.size()){
 			return rightIndex;
 		}else{
 			throw new IllegalArgumentException("RightIndexOutOfArrayLength");
 		}
 	}
 	public int getRightValue(int index){
-		return array[getRightIndex(index)];
+		return array.get(getRightIndex(index));
 	}
 	
-	public int [] getArray() {
-		return array;
-	}
-	public void setArray(int [] array) {
-		this.array = array;
-	}
+
 }
