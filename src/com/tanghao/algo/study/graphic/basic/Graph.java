@@ -67,18 +67,13 @@ public class Graph implements IGraph {
 		adjList[w].add(v);
 		E++;
 	}
-
-	@Override
-	public Iterator<Integer> adj(int v) {
-		return adjList[v].iterator();
-	}
 	
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder("");
 		sb.append("\n------- Adjacency-List  --------\n\n");
 		for(int i= 0 ; i< V(); i++){
-			Iterator<Integer> iterator = adj(i);
+			Iterator<Integer> iterator = adjIterator(i);
 			sb.append(String.format("%-2s", i) + " | ");
 			while (iterator.hasNext()) {
 				int next = iterator.next();
@@ -115,5 +110,15 @@ public class Graph implements IGraph {
 			sb.append("\n");
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public Iterator<Integer> adjIterator(int v) {
+		return adjList[v].iterator();
+	}
+
+	@Override
+	public Iterable<Integer> adj(int v) {
+		return adjList[v];
 	}
 }

@@ -11,7 +11,7 @@ public class GraphAdapterHelper{
 	public void convertToUndirectGraph(UndirectedGraph<Integer, DefaultEdge> undirectGraph, IGraph graph){
 		for (int v = 0; v < graph.V(); v++) {
 			if(!undirectGraph.containsVertex(v)) undirectGraph.addVertex(v);
-			Iterator<Integer> graphIterator = graph.adj(v);
+			Iterator<Integer> graphIterator = graph.adjIterator(v);
 			while (graphIterator.hasNext()) {
 				int nextVertex = graphIterator.next();
 				if(!undirectGraph.containsVertex(nextVertex)) 	undirectGraph.addVertex(nextVertex);

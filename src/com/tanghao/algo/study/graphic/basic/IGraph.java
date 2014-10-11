@@ -7,5 +7,6 @@ public interface IGraph{
 	int V();
 	int E();
 	void addEdge(int v, int w);
-	Iterator<Integer> adj(int v);
+	Iterator<Integer> adjIterator(int v);
+	Iterable<Integer> adj(int v);
 } 
